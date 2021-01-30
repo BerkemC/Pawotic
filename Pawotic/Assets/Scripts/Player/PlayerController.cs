@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
 	{
 		Vector3 resultingVector = GetResultingMovementVector();
 		rb.velocity = resultingVector * movementSpeed;
+
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			LoadManager.LoadTargetSceneStatic(0);
+		}
 	}
 
 	private static Vector3 GetResultingMovementVector()

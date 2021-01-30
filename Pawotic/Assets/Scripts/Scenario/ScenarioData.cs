@@ -8,4 +8,5 @@ public class ScenarioData : ScriptableObject
 	[Multiline]
 	public string scenarioText;
 	public ScenarioCardData[] scenarioSequence;
+	public ScenarioCardData[] cardRewards;
 }
