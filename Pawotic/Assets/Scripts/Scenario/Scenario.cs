@@ -75,6 +75,8 @@ public class Scenario : MonoBehaviour
 
 		audioSource.clip = openSound;
 		audioSource.Play();
+		holder.SelectedCardIndices.Clear();
+		holder.UpdateView();
 	}
 
 	public void ResetContent(bool dettachContent = false)
@@ -90,6 +92,7 @@ public class Scenario : MonoBehaviour
 				}
 			}
 			holder.SelectedCardIndices.Clear();
+			holder.UpdateView();
 		}
 
 		for (int i = contentParent.childCount - 1; i > -1; --i)
