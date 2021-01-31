@@ -15,7 +15,17 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D rb;
 	private Animation animation;
 	private Camera mainCamera;
+	[SerializeField]
+	private SpriteRenderer renderer;
 	private bool controlState;
+	[SerializeField]
+	private Sprite front;
+	[SerializeField]
+	private Sprite back;
+	[SerializeField]
+	private Sprite right;
+	[SerializeField]
+	private Sprite left;
 
 	private void Awake()
 	{
@@ -27,15 +37,15 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if(!controlState)
+		if (!controlState)
 		{
 			return;
 		}
 
-		if(Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))
 		{
 			Ray ray = mainCamera.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.transform.position.z));
-			if(Physics.Raycast(ray, out RaycastHit hit))
+			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
 				Scenario scenario = hit.transform.GetComponent<Scenario>();
 				if (scenario != null)
@@ -56,6 +66,23 @@ public class PlayerController : MonoBehaviour
 		Vector3 resultingVector = GetResultingMovementVector();
 		rb.velocity = (resultingVector * movementSpeed);
 
+		if(resultingVector.y > 0f)
+		{
+			renderer.sprite = back;
+		}
+		else if(resultingVector.y < 0f)
+		{
+			renderer.sprite = front;
+		}
+		else if(resultingVector.x > 0f)
+		{
+			renderer.sprite = right;
+		}
+		else if(resultingVector.x < 0f)
+		{
+			renderer.sprite = left;
+		}
+
 		if (resultingVector.sqrMagnitude > (0.1f * 0.1f))
 		{
 			if (!animation.isPlaying)
@@ -65,7 +92,7 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 		{
-			if(animation.isPlaying)
+			if (animation.isPlaying)
 			{
 				animation.Stop();
 			}
@@ -83,8 +110,8 @@ public class PlayerController : MonoBehaviour
 	public void SetControlState(bool state)
 	{
 		controlState = state;
-		
-		if(!controlState)
+
+		if (!controlState)
 		{
 			rb.velocity = Vector3.zero;
 			if (animation.isPlaying)

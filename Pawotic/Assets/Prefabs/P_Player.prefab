@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1050094744831600774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3583630777612970328}
   m_Father: {fileID: 0}
@@ -49,6 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  renderer: {fileID: 1731744232004745366}
+  front: {fileID: 21300000, guid: 4c8d9215485f4fa44a334548ccb3e500, type: 3}
+  back: {fileID: 21300000, guid: 8e72bebf869828f4baf655022a7ad22d, type: 3}
+  right: {fileID: 21300000, guid: 0f8853f90d83de342aa9f1460cabe31b, type: 3}
+  left: {fileID: 21300000, guid: 68bf323ef8739ce4f97617c36fe41526, type: 3}
 --- !u!50 &1050094744831600775
 Rigidbody2D:
   serializedVersion: 4
@@ -150,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 5641024398506102891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1050094744831600778}
   m_RootOrder: 0
@@ -195,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4c8d9215485f4fa44a334548ccb3e500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

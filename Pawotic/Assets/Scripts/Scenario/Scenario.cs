@@ -67,7 +67,7 @@ public class Scenario : MonoBehaviour
 
 		cancelButton.GetComponent<Button>().onClick.AddListener(() =>
 		{
-			ResetContent();
+			ResetContent(true);
 			cancelButton.gameObject.SetActive(false);
 		});
 
@@ -75,8 +75,20 @@ public class Scenario : MonoBehaviour
 		audioSource.Play();
 	}
 
-	public void ResetContent()
+	public void ResetContent(bool dettachContent = false)
 	{
+		if(dettachContent)
+		{
+			for (int i = 0; i < slots.Length; i++)
+			{
+				ref ScenarioCardSlot slot = ref slots[i];
+				if(slot.SelectedCard)
+				{
+					slot.SelectedCard.OnDettachedFromSlot();
+				}
+			}
+		}
+
 		for (int i = contentParent.childCount - 1; i > -1; --i)
 		{
 			Destroy(contentParent.GetChild(i).gameObject);
