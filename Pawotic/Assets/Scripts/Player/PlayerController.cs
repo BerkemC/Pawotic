@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 	private Sprite right;
 	[SerializeField]
 	private Sprite left;
+	private Vector3 resultingVector;
+
+	public Vector3 ResultingVector { get => resultingVector; set => resultingVector = value; }
 
 	private void Awake()
 	{
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
 
-		Vector3 resultingVector = GetResultingMovementVector();
+		resultingVector = GetResultingMovementVector();
 		rb.velocity = (resultingVector * movementSpeed);
 
 		if(resultingVector.y > 0f)
