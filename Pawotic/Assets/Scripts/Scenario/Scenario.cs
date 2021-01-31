@@ -128,6 +128,7 @@ public class Scenario : MonoBehaviour
 			isAllDecisionsMade &= (slot.SelectedCard != null);
 			if(!isAllDecisionsMade)
 			{
+				isCompleted = false;
 				return;
 			}
 			isCompleted &= (slot.SelectedCard.Data == scenario.scenarioSequence[slot.SlotOrder]);
