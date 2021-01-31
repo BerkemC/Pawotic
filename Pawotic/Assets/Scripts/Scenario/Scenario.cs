@@ -160,5 +160,6 @@ public class Scenario : MonoBehaviour
 		audioSource.clip = successSound;
 		audioSource.Play();
 		finalScenario.CheckAllScenarioCompletions();
+		cancelButton.gameObject.SetActive(false);
 	}
 }

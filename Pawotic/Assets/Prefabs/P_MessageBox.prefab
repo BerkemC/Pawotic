@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 8317109289879165802}
   perLetterTime: 0.01
-  messageDisplayTime: 30
+  messageDisplayTime: 20
   openClip: {fileID: 7400000, guid: f0965b575bc639342b6ded4fe72399a9, type: 2}
   closeClip: {fileID: 7400000, guid: 446946bb2a4a9574ba3e731a5341081f, type: 2}
 --- !u!82 &1997615697367721664
