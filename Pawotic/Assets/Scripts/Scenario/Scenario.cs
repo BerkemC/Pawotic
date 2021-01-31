@@ -30,6 +30,7 @@ public class Scenario : MonoBehaviour
 	[SerializeField]
 	private AudioClip failureSound;
 	private FinalScenario finalScenario;
+	private ScenarioCardHolder holder;
 
 	public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
 
@@ -39,6 +40,7 @@ public class Scenario : MonoBehaviour
 		controller = inventory.GetComponent<PlayerController>();
 		finalScenario = FindObjectOfType<FinalScenario>(true);
 		audioSource = GetComponent<AudioSource>();
+		holder = FindObjectOfType<ScenarioCardHolder>();
 	}
 
 	public void Initialise()
@@ -87,6 +89,7 @@ public class Scenario : MonoBehaviour
 					slot.SelectedCard.OnDettachedFromSlot();
 				}
 			}
+			holder.SelectedCardIndices.Clear();
 		}
 
 		for (int i = contentParent.childCount - 1; i > -1; --i)
@@ -144,17 +147,12 @@ public class Scenario : MonoBehaviour
 		{
 			return;
 		}
-		for (int i = 0; i < slots.Length; i++)
-		{
-			ref ScenarioCardSlot slot = ref slots[i];
-			slot.SelectedCard.OnDettachedFromSlot();
-		}
 
 		if(scenario.cardRewards != null)
 		{
 			inventory.AddScenarioCards(scenario.cardRewards);
 		}
-		ResetContent();
+		ResetContent(true);
 		MessageBoxController.Instance.DisplayMessage(scenario.scenarioText);
 		MessageBoxController.Instance.DisplayMessage("Congratulations! You are one step closer to find Poco! You have received more scenario cards to solve the mystery!");
 		audioSource.clip = successSound;
