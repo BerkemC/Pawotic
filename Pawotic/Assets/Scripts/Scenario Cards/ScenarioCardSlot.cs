@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ScenarioCardSlot : MonoBehaviour
 {
     [SerializeField]
@@ -12,6 +13,8 @@ public class ScenarioCardSlot : MonoBehaviour
     private ScenarioCard selectedCard;
     private Scenario connectedScenario;
 
+    private AudioSource audioSource;
+
 	public float SlotSnapProximityPwr { get => slotSnapProximityPwr; set => slotSnapProximityPwr = value; }
 	public ScenarioCard SelectedCard { get => selectedCard; set => selectedCard = value; }
 	public int SlotOrder { get => slotOrder; set => slotOrder = value; }
@@ -19,6 +22,7 @@ public class ScenarioCardSlot : MonoBehaviour
 	private void Awake()
     {
         slotSnapProximityPwr = slotSnapProximity * slotSnapProximity;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Initialise(in Scenario scenario, int order)
@@ -29,13 +33,14 @@ public class ScenarioCardSlot : MonoBehaviour
 
     public void SetSelectedCard(in ScenarioCard card)
 	{
-        if(selectedCard)
+        if(selectedCard && selectedCard != card)
 		{
             selectedCard.OnDettachedFromSlot();
 		}
 
         selectedCard = card;
         connectedScenario.CheckScenarioCardCombination();
+        audioSource.Play();
 	}
 
 #if UNITY_EDITOR

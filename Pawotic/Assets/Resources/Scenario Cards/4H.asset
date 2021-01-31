@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039f65be5760f244690643ac8df626a2, type: 3}
   m_Name: 4H
   m_EditorClassIdentifier: 
-  addedOnGameStart: 0
+  addedOnGameStart: 1
   cardDescription: Poco accidentally releases all the pets in the store with digital
     lock

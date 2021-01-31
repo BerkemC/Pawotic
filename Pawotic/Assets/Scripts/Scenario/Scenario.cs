@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Scenario : MonoBehaviour
 {
     [SerializeField]
@@ -16,16 +18,36 @@ public class Scenario : MonoBehaviour
 	[SerializeField]
 	private float slotSize;
 	private PlayerInventory inventory;
-	
+	private PlayerController controller;
+	private bool isActivated;
+	private bool isCompleted;
+	private ScenarioCancelButton cancelButton;
+	private AudioSource audioSource;
+	[SerializeField]
+	private AudioClip openSound;
+	[SerializeField]
+	private AudioClip successSound;
+	[SerializeField]
+	private AudioClip failureSound;
+	private FinalScenario finalScenario;
+
+	public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
 
 	private void Awake()
 	{
 		inventory = FindObjectOfType<PlayerInventory>();
-		Initialise();
+		controller = inventory.GetComponent<PlayerController>();
+		finalScenario = FindObjectOfType<FinalScenario>(true);
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	public void Initialise()
 	{
+		if(isActivated)
+		{
+			return;
+		}
+		
 		ResetContent();
 
 		slots = new ScenarioCardSlot[scenario.scenarioSequence.Length];
@@ -37,6 +59,20 @@ public class Scenario : MonoBehaviour
 			slot.Initialise(this, i);
 			slots[i] = slot;
 		}
+		isActivated = true;
+		controller.SetControlState(false);
+		
+		cancelButton = FindObjectOfType<ScenarioCancelButton>(true);
+		cancelButton.gameObject.SetActive(true);
+
+		cancelButton.GetComponent<Button>().onClick.AddListener(() =>
+		{
+			ResetContent();
+			cancelButton.gameObject.SetActive(false);
+		});
+
+		audioSource.clip = openSound;
+		audioSource.Play();
 	}
 
 	public void ResetContent()
@@ -45,6 +81,12 @@ public class Scenario : MonoBehaviour
 		{
 			Destroy(contentParent.GetChild(i).gameObject);
 		}
+
+		if(isActivated && !isCompleted)
+		{
+			isActivated = false;
+		}
+		controller.SetControlState(true);
 	}
 
 	public void CheckScenarioCardCombination()
@@ -54,7 +96,7 @@ public class Scenario : MonoBehaviour
 			return;
 		}
 
-		bool isCompleted = true;
+		isCompleted = true;
 		bool isAllDecisionsMade = true;
 		for (int i = 0; i < slots.Length; i++)
 		{
@@ -77,6 +119,11 @@ public class Scenario : MonoBehaviour
 		{
 			OnScenarioIsCompleted();
 		}
+		else
+		{
+			audioSource.clip = failureSound;
+			audioSource.Play();
+		}
 	}
 
 	private void OnScenarioIsCompleted() 
@@ -90,7 +137,16 @@ public class Scenario : MonoBehaviour
 			ref ScenarioCardSlot slot = ref slots[i];
 			slot.SelectedCard.OnDettachedFromSlot();
 		}
-		inventory.AddScenarioCards(scenario.cardRewards);
+
+		if(scenario.cardRewards != null)
+		{
+			inventory.AddScenarioCards(scenario.cardRewards);
+		}
 		ResetContent();
+		MessageBoxController.Instance.DisplayMessage(scenario.scenarioText);
+		MessageBoxController.Instance.DisplayMessage("Congratulations! You are one step closer to find Poco! You have received more scenario cards to solve the mystery!");
+		audioSource.clip = successSound;
+		audioSource.Play();
+		finalScenario.CheckAllScenarioCompletions();
 	}
 }

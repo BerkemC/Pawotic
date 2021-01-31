@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private ScenarioCardData data;
@@ -23,11 +24,13 @@ public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 	private float currentGoBackTime;
 
 	public ScenarioCardData Data { get => data; set => data = value; }
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
 		canvas = FindObjectOfType<Canvas>();
 		initialParent = transform.parent as RectTransform;
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Start()
@@ -89,6 +92,7 @@ public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 		transform.parent = initialParent;
 		StartCoroutine(MoveTowardsHolder());
 		holder.SelectedCardIndices.Remove(holderIndex);
+		audioSource.Play();
 	}
 
 	public void OnDrag(PointerEventData eventData)

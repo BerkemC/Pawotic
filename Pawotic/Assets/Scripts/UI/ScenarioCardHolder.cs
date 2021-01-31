@@ -67,7 +67,8 @@ public class ScenarioCardHolder : MonoBehaviour
 
 			GameObject child = Instantiate(cardVisualPrefab, contentParent);
 			child.transform.localPosition = (-Vector3.one * topPadding) - (i * Vector3.up * cardSize);
-			child.GetComponent<ScenarioCard>().Initialise(inventory.AcquiredCards[targetCardIndex], this, targetCardIndex);
+			ScenarioCard card = child.GetComponent<ScenarioCard>();
+			card.Initialise(inventory.AcquiredCards[targetCardIndex], this, targetCardIndex);
 		}
 	}
 

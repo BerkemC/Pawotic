@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  scenarioText: Player opens the kitchen window after cooking. The cat follows the
-    smell, but falls on top of the dog under the window when accidentally sliding
-    on the kitchen counter.
+  scenarioText: Player opens the kitchen window after cooking. Poco follows the smell,
+    but falls on top of the dog under the window after accidentally sliding on the
+    kitchen counter. They fight, and Poco runs away.
   scenarioSequence:
   - {fileID: 11400000, guid: c1c7524a63c05984e8ab071ec4839439, type: 2}
   - {fileID: 11400000, guid: 5e863a795ef011e479583f66eb35b01a, type: 2}
@@ -25,5 +25,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 554bda661e3d9cd4ca31e7e80b01e52a, type: 2}
   cardRewards:
   - {fileID: 11400000, guid: 32c4ba7d21c4a714fb7d6fc2f48381f3, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 3c0bd2ce4358a914093e26b48b82b331, type: 2}
+  - {fileID: 11400000, guid: d62b39977dafe9044b0fbc5b00a8804d, type: 2}
+  - {fileID: 11400000, guid: a74bafba897a31143a272af25900b411, type: 2}
+  - {fileID: 11400000, guid: 3c39837d3263e5140a5ad7b2c62e8a19, type: 2}
+  - {fileID: 11400000, guid: 85e17571c9e548942bbc40ec8750c447, type: 2}
+  - {fileID: 11400000, guid: e9396507f2818984e99d4c521b4600bb, type: 2}
+  - {fileID: 11400000, guid: c04151b6eb9c97042bab8286d34057ef, type: 2}
+  - {fileID: 11400000, guid: c046f34bb3b2f0a4a8a392db1e8d2443, type: 2}
+  - {fileID: 11400000, guid: c6006c88c8795704e9e5206b9e157d87, type: 2}

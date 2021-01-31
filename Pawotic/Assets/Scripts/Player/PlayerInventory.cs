@@ -18,22 +18,40 @@ public class PlayerInventory : MonoBehaviour
 		for (int i = 0; i < cards.Length; i++)
 		{
 			ref ScenarioCardData card = ref cards[i];
-			if(card.addedOnGameStart)
+			if(card.addedOnGameStart && !acquiredCards.Contains(card))
 			{
 				acquiredCards.Add(card);
 			}
 		}
+		ShuffleInventory();
 	}
 
 	public void AddScenarioCards(in ScenarioCardData card)
 	{
 		acquiredCards.Add(card);
+		ShuffleInventory();
 		holder.UpdateView();
 	}
 
 	public void AddScenarioCards(in ScenarioCardData[] cards)
 	{
 		acquiredCards.AddRange(cards);
+		ShuffleInventory();
 		holder.UpdateView();
+	}
+
+	private void ShuffleInventory()
+	{
+		for (int i = 0; i < acquiredCards.Count; i++)
+		{
+			SwapItems(i, Random.Range(0, acquiredCards.Count));
+		}
+	}
+
+	private void SwapItems(int index0, int index1)
+	{
+		ScenarioCardData temp = acquiredCards[index0];
+		acquiredCards[index0] = acquiredCards[index1];
+		acquiredCards[index1] = temp;
 	}
 }
