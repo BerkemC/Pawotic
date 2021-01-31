@@ -8,24 +8,43 @@ public class Scenario : MonoBehaviour
     private int scenarioOrder;
     [SerializeField]
     private ScenarioData scenario;
-    [SerializeField]
     private ScenarioCardSlot[] slots;
+	[SerializeField]
+	private GameObject slotPrefab;
+	[SerializeField]
+	private Transform contentParent;
+	[SerializeField]
+	private float slotSize;
 	private PlayerInventory inventory;
+	
 
 	private void Awake()
 	{
-		if(slots == null)
-		{
-            return;
-		}
-
-		for (int i = 0; i < slots.Length; i++)
-		{
-			ref ScenarioCardSlot slot = ref slots[i];
-			slot.Initialise(this);
-		}
-
 		inventory = FindObjectOfType<PlayerInventory>();
+		Initialise();
+	}
+
+	public void Initialise()
+	{
+		ResetContent();
+
+		slots = new ScenarioCardSlot[scenario.scenarioSequence.Length];
+		for (int i = 0; i < scenario.scenarioSequence.Length; i++)
+		{
+			GameObject child = Instantiate(slotPrefab, contentParent);
+			child.transform.localPosition = (i * Vector3.right * slotSize);
+			ScenarioCardSlot slot = child.GetComponent<ScenarioCardSlot>();
+			slot.Initialise(this, i);
+			slots[i] = slot;
+		}
+	}
+
+	public void ResetContent()
+	{
+		for (int i = contentParent.childCount - 1; i > -1; --i)
+		{
+			Destroy(contentParent.GetChild(i).gameObject);
+		}
 	}
 
 	public void CheckScenarioCardCombination()
@@ -47,7 +66,11 @@ public class Scenario : MonoBehaviour
 			}
 
 			isAllDecisionsMade &= (slot.SelectedCard != null);
-			isCompleted &= (slot.SelectedCard == scenario.scenarioSequence[slot.SlotOrder]);
+			if(!isAllDecisionsMade)
+			{
+				return;
+			}
+			isCompleted &= (slot.SelectedCard.Data == scenario.scenarioSequence[slot.SlotOrder]);
 		}
 
 		if(isCompleted)
@@ -62,7 +85,12 @@ public class Scenario : MonoBehaviour
 		{
 			return;
 		}
-
+		for (int i = 0; i < slots.Length; i++)
+		{
+			ref ScenarioCardSlot slot = ref slots[i];
+			slot.SelectedCard.OnDettachedFromSlot();
+		}
 		inventory.AddScenarioCards(scenario.cardRewards);
+		ResetContent();
 	}
 }

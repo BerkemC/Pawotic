@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioOrder: 0
   scenario: {fileID: 0}
+  slotPrefab: {fileID: 6024745445306909842, guid: b9b754391a75d9746b0e47283853bdf0, type: 3}
+  slotSize: 180

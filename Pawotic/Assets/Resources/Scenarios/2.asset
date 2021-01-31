@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  scenarioText: The cat runs into a road, and a driver seeing that looses control
+    to avoid hitting the cat. Aliens come checking the signals caused by broken radio,
+    and die after the cat tearing their space suits for being chased.
+  scenarioSequence:
+  - {fileID: 11400000, guid: 32c4ba7d21c4a714fb7d6fc2f48381f3, type: 2}
+  - {fileID: 11400000, guid: 3c0bd2ce4358a914093e26b48b82b331, type: 2}
+  - {fileID: 11400000, guid: 9e7cba323771afb49b2e053ca9b85994, type: 2}
+  - {fileID: 11400000, guid: 66e9e256d4c83284b90181a47ce979fe, type: 2}
+  - {fileID: 11400000, guid: 4e97653f54073b843bde151d7df0ed34, type: 2}
+  - {fileID: 11400000, guid: d62b39977dafe9044b0fbc5b00a8804d, type: 2}
+  - {fileID: 11400000, guid: 140062c3264331a4886ee57dd29f8718, type: 2}
+  - {fileID: 11400000, guid: a74bafba897a31143a272af25900b411, type: 2}
+  - {fileID: 11400000, guid: 3167fc6a7d52f8e4695be83de2daa906, type: 2}
+  cardRewards:
+  - {fileID: 11400000, guid: f1eade5395c27f545a959fee439338a3, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Scenario Card Data", menuName = "Custom/Scenario Card Data/ Create New Scenario Card")]
 public class ScenarioCardData : ScriptableObject
 {
+    public bool addedOnGameStart;
     public string cardDescription;
 }

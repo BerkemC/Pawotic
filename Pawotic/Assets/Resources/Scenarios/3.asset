@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  scenarioText: Runing into a garden next to the road, the cat sees a mouse and chases
+    it into a house through basement window. After ruining a familiy meal, the chase
+    ends up with a destruction of a tree house.
+  scenarioSequence:
+  - {fileID: 11400000, guid: f1eade5395c27f545a959fee439338a3, type: 2}
+  - {fileID: 11400000, guid: dbedd93b0c4eabd459296e75358082c0, type: 2}
+  - {fileID: 11400000, guid: 0c37a477fcad62745855e43b94c423ef, type: 2}
+  - {fileID: 11400000, guid: c046f34bb3b2f0a4a8a392db1e8d2443, type: 2}
+  - {fileID: 11400000, guid: 49cb27ba617fc594dbe986e34c8b46d5, type: 2}
+  - {fileID: 11400000, guid: adaa87da67af8894786c62c5924b9f54, type: 2}
+  - {fileID: 11400000, guid: c6006c88c8795704e9e5206b9e157d87, type: 2}
+  - {fileID: 11400000, guid: 47dcddc2c48fc4d4f8ea9e30e0342f6c, type: 2}
+  - {fileID: 11400000, guid: b675442df595ff54e83fa7d346ca1bdb, type: 2}
+  cardRewards:
+  - {fileID: 11400000, guid: f4542a43b964ba54ab4d53b2883a2374, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -16,18 +16,14 @@ public class PlayerController : MonoBehaviour
 
 	private void Awake()
 	{
-		rb = GetComponent<Rigidbody2D>();	
+		rb = GetComponent<Rigidbody2D>();
+		MessageBoxController.Instance.DisplayMessage("This is a test message to test the message box controller.");
 	}
 
 	private void LateUpdate()
 	{
 		Vector3 resultingVector = GetResultingMovementVector();
 		rb.velocity = resultingVector * movementSpeed;
-
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			LoadManager.LoadTargetSceneStatic(0);
-		}
 	}
 
 	private static Vector3 GetResultingMovementVector()

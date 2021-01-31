@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
+  m_Name: 9
+  m_EditorClassIdentifier: 
+  scenarioText: Poco finally gets a rest after all the adventure for one single day.
+    Thanks for playing and finding Poco!
+  scenarioSequence:
+  - {fileID: 11400000, guid: df3d3bc8c4d656e4ea894cdbc15fdd36, type: 2}
+  cardRewards: []

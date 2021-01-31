@@ -7,7 +7,6 @@ public class ScenarioCardSlot : MonoBehaviour
     [SerializeField]
     private float slotSnapProximity;
     private float slotSnapProximityPwr;
-    [SerializeField]
     private int slotOrder;
     
     private ScenarioCard selectedCard;
@@ -22,9 +21,10 @@ public class ScenarioCardSlot : MonoBehaviour
         slotSnapProximityPwr = slotSnapProximity * slotSnapProximity;
     }
 
-    public void Initialise(in Scenario scenario)
+    public void Initialise(in Scenario scenario, int order)
     {
         connectedScenario = scenario;
+        slotOrder = order;
     }
 
     public void SetSelectedCard(in ScenarioCard card)
@@ -35,7 +35,7 @@ public class ScenarioCardSlot : MonoBehaviour
 		}
 
         selectedCard = card;
-        //Trigger Check
+        connectedScenario.CheckScenarioCardCombination();
 	}
 
 #if UNITY_EDITOR

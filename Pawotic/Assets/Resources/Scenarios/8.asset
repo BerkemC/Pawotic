@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: 
+  scenarioText: Poco finds a colourful amusement park in testing stage, but gets
+    chased in panic after being washed in one of the games, she causes a crane operator
+    to loose control and destroy many games in the park
+  scenarioSequence:
+  - {fileID: 11400000, guid: d6c37a46fc8f4e449b759792cf6f8edb, type: 2}
+  - {fileID: 11400000, guid: 89e67fc63b7f6a84e8cbe8e8dc266d00, type: 2}
+  - {fileID: 11400000, guid: f598ebc06e0d59b418ba07080df5c65e, type: 2}
+  - {fileID: 11400000, guid: 70f219846fa8c6a4c92b592d8aa02b60, type: 2}
+  - {fileID: 11400000, guid: c1e04b8697c0e364593636b4d08a2697, type: 2}
+  - {fileID: 11400000, guid: 5adf31c109f4b9343b505e245196a6e7, type: 2}
+  - {fileID: 11400000, guid: a60846df6d2b9fa4a999d24bcfb941a0, type: 2}
+  cardRewards:
+  - {fileID: 11400000, guid: df3d3bc8c4d656e4ea894cdbc15fdd36, type: 2}

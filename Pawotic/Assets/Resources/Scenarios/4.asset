@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  scenarioText: Poco discovers a petshop with cultists trying to sacrifice a cat.
+    Seeing Poco, they get distracted and both cats manage o escape while also freeing
+    the others, accidentally.
+  scenarioSequence:
+  - {fileID: 11400000, guid: f4542a43b964ba54ab4d53b2883a2374, type: 2}
+  - {fileID: 11400000, guid: 835fafcfbd1bc604daec38e6d179bf3e, type: 2}
+  - {fileID: 11400000, guid: e9396507f2818984e99d4c521b4600bb, type: 2}
+  - {fileID: 11400000, guid: 941a769b9fb268043b88f7840124c7ed, type: 2}
+  - {fileID: 11400000, guid: c04151b6eb9c97042bab8286d34057ef, type: 2}
+  - {fileID: 11400000, guid: 9e15d9d894b659a48bdc2bbd9eebb409, type: 2}
+  - {fileID: 11400000, guid: 33d9ef7a15e48f04d99a07db0e7233b8, type: 2}
+  - {fileID: 11400000, guid: ad2d66ad4b427b449a7dc0860d79279b, type: 2}
+  cardRewards:
+  - {fileID: 11400000, guid: e5d8fdc833e5797468a99418a827b9a8, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

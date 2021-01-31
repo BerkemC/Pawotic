@@ -11,10 +11,12 @@ public class LoadManager : MonoBehaviour
 
 	[SerializeField]
 	private Slider progressSlider;
+	[SerializeField]
+	private bool dontLoadSceneOnAwake;
 
 	private void Awake()
 	{
-		if(targetScene == -1)
+		if(targetScene == -1 || dontLoadSceneOnAwake)
 		{
 			return;
 		}
@@ -32,6 +34,11 @@ public class LoadManager : MonoBehaviour
 		Load(sceneIndex);
 	}
 
+	public void ExitGame()
+	{
+		Application.Quit();
+	}
+
 	private static void Load(int sceneIndex)
 	{
 		targetScene = sceneIndex;
@@ -40,7 +47,6 @@ public class LoadManager : MonoBehaviour
 
 	IEnumerator LoadSceneAsync(int sceneIndex)
 	{
-		yield return new WaitForSecondsRealtime(5f);
 		AsyncOperation progress = SceneManager.LoadSceneAsync(sceneIndex);
 
 		while (!progress.isDone)

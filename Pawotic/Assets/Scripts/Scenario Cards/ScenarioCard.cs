@@ -12,18 +12,33 @@ public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 	private bool isBeingDragged = false;
 	private RectTransform initialParent;
 	private Vector3 initialWorldPos;
+	private ScenarioCardHolder holder;
+	private int holderIndex;
 
 	[SerializeField]
     private Text descriptionField;
+
+	[SerializeField]
+	private float goBackTime;
+	private float currentGoBackTime;
+
+	public ScenarioCardData Data { get => data; set => data = value; }
+
 	private void Awake()
 	{
 		canvas = FindObjectOfType<Canvas>();
 		initialParent = transform.parent as RectTransform;
-		descriptionField.text = Random.Range(0, 172492).ToString();
 	}
 
-	public void Initialise(in ScenarioCardData scenarioCardData)
+	private void Start()
 	{
+		initialWorldPos = transform.position;
+	}
+
+	public void Initialise(in ScenarioCardData scenarioCardData, in ScenarioCardHolder cardHolder, int indexInHolder)
+	{
+		holderIndex = indexInHolder;
+		holder = cardHolder;
 		data = scenarioCardData;
 		InitialiseUI();
 	}
@@ -35,7 +50,6 @@ public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		initialWorldPos = transform.position;
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
@@ -66,11 +80,15 @@ public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 		slot.SetSelectedCard(this);
 		transform.parent = canvas.transform;
 		transform.position = slot.transform.position;
+		holder.SelectedCardIndices.Add(holderIndex);
+		currentGoBackTime = 0f;
 	}
 
 	public void OnDettachedFromSlot()
 	{
 		transform.parent = initialParent;
+		StartCoroutine(MoveTowardsHolder());
+		holder.SelectedCardIndices.Remove(holderIndex);
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -81,5 +99,19 @@ public class ScenarioCard : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 																out Vector2 pos);
 		pos = canvas.transform.TransformPoint(pos);
 		transform.position = pos;
+	}
+
+	public IEnumerator MoveTowardsHolder()
+	{
+		Vector3 startPos = transform.position;
+		while(currentGoBackTime < goBackTime)
+		{
+			transform.position = Vector3.Lerp(startPos, initialWorldPos, currentGoBackTime / goBackTime);
+			currentGoBackTime += Time.deltaTime;
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+		
+		transform.position = initialWorldPos;
+		yield return null;
 	}
 }

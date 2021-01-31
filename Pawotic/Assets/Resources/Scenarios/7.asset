@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a8fe34788f65443bae04238ec49f69, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  scenarioText: Poco turns on the intensity for what could've been a more silent
+    police operation by revealing the idden cops during a drug dealing event in an
+    abondened warehouse
+  scenarioSequence:
+  - {fileID: 11400000, guid: bf44ced7c2acd3c4882c0d714b765561, type: 2}
+  - {fileID: 11400000, guid: 10dfae506c4c6564cb1020fc593f685b, type: 2}
+  - {fileID: 11400000, guid: 16310b945677a7340a8a18d17d7cc714, type: 2}
+  - {fileID: 11400000, guid: 6fe1d13c62b89b54f9c41797ffc31b30, type: 2}
+  - {fileID: 11400000, guid: d405585cc3e1e8d4781aaaee4f6a9528, type: 2}
+  - {fileID: 11400000, guid: f143bf8c0ee47e446a8f3a977cb1cf12, type: 2}
+  - {fileID: 11400000, guid: 36aeab8c0ac860047883bbe37cc88fe1, type: 2}
+  cardRewards:
+  - {fileID: 11400000, guid: d6c37a46fc8f4e449b759792cf6f8edb, type: 2}
